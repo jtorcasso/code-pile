@@ -1,0 +1,54 @@
+\begin{theindex}
+
+  \item addhlines() (tablemaker.Row method), \hyperpage{8}
+  \item align() (tablemaker.Row method), \hyperpage{8}
+  \item autoFormat() (tablemaker.Row method), \hyperpage{8}
+
+  \indexspace
+
+  \item buildHline() (tablemaker.Row method), \hyperpage{8}
+
+  \indexspace
+
+  \item formatValue() (tablemaker.Row method), \hyperpage{8}
+
+  \indexspace
+
+  \item getValues() (tablemaker.Row method), \hyperpage{8}
+
+  \indexspace
+
+  \item makeAlignment() (tablemaker.Row method), \hyperpage{8}
+  \item makeTex() (tablemaker.Row method), \hyperpage{8}
+  \item makeTex() (tablemaker.Table method), \hyperpage{7}
+  \item mergeEmpty() (tablemaker.Row method), \hyperpage{8}
+
+  \indexspace
+
+  \item read() (in module tablemaker), \hyperpage{7}
+  \item rotateContents() (tablemaker.Row method), \hyperpage{8}
+  \item Row (class in tablemaker), \hyperpage{8}
+
+  \indexspace
+
+  \item setBottomSpacing() (tablemaker.Row method), \hyperpage{9}
+  \item setFloat() (tablemaker.Table method), \hyperpage{7}
+  \item setFontSize() (tablemaker.Table method), \hyperpage{7}
+  \item setFormat() (tablemaker.Row method), \hyperpage{9}
+  \item setHlines() (tablemaker.Table method), \hyperpage{7}
+  \item setLabel() (tablemaker.Table method), \hyperpage{7}
+  \item setNotes() (tablemaker.Table method), \hyperpage{7}
+  \item setRepeat() (tablemaker.Table method), \hyperpage{7}
+  \item setRows() (tablemaker.Table method), \hyperpage{7}
+  \item setTableAlignment() (tablemaker.Table method), \hyperpage{8}
+  \item setTitle() (tablemaker.Table method), \hyperpage{8}
+  \item setTopSpacing() (tablemaker.Row method), \hyperpage{9}
+  \item setType() (tablemaker.Table method), \hyperpage{8}
+
+  \indexspace
+
+  \item Table (class in tablemaker), \hyperpage{7}
+  \item tablemaker (module), \hyperpage{1}
+  \item texCommands() (in module tablemaker), \hyperpage{7}
+
+\end{theindex}

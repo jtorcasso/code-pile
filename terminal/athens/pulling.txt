@@ -1,0 +1,37 @@
+$ git pull ssh://jake@128.135.133.60/home/jake/Documents/repos/erc/data/HSIS
+
+Yup, port 22 is blocked. You'll need to open it temporarily.
+
+First, make sure openssh-server is installed. If the command:
+sudo dpkg --get-selections openssh-server
+
+returns nothing; that is, you get your prompt back and don't see:
+openssh-server                                  install
+
+then you need to install openssh-server with:
+sudo apt-get install openssh-server
+
+Check to make sure sshd is listening:
+sudo lsof -i TCP:22
+
+Check to see if your firewall is running:
+sudo ufw status
+
+If it returns inactive (the default), no firewall is running; you should be able to connect from athensx. Try the git pull command and see what happens.
+
+If your firewall status is active, then run:
+sudo ufw allow 22
+
+to open port 22. However, it looks like you've got two samba ports open already, so it's possible your firewall is not enabled.
+
+If you want to enable the firewall, run:
+sudo ufw enable
+
+To open those two samba ports:
+sudo ufw allow 139
+sudo ufw allow 445
+
+Though personally I would recommend enabling the firewall and only opening port 22 and using more secure methods than samba for sharing your files.
+
+In any event, install openssh-server, open port 22, and let us know what happens to your git pull.
+

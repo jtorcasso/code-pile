@@ -1,0 +1,52 @@
+Generally users will use a submission script to pass a batch job off to
+the cluster. This example would run a program called  MyProgram.py. The
+PBS options would ask for 1 node. Since this would be a multi processor
+job but not using MPI to span across multiple nodes you would only be
+able to run on one node at a time with fewer than 32 processors per-job.
+The job will need 10 processors per-node "ppn".
+
+You would save this example to a file then use the qsub command to
+submit it. For example "qsub submit.sh". You could use this and submit
+multiple python batch jobs at once. I could submit 15 jobs using this
+example which would equal to 150 processors at once which is the
+allowable limit. Beyond that my jobs would queue.
+
+#!/bin/bash
+#PBS -N PythonJob
+#PBS -l nodes=1:ppn=10
+#PBS -j oe
+
+cd $PBS_O_WORKDIR
+# execute program
+python2.7 MyProgram.py
+
+You did mention that you wanted to work interactively which is possible.
+Running the following will log you into a node in an interactive session
+similarly to using ssh to log in. This will reserve 10 cores for you to
+work in on a node. The job scheduler will decide which node to log you
+into depending on the resources you have requested.
+
+qsub -I -V -l nodes=1:ppn=10
+
+
+If you run the showq command you will get an idea of what resources are
+available. If you really want to see the system load you can go to
+https://acropolis.uchicago.edu/ganglia and log in with the user sscs and
+password ganglia. Currently showq lists the nodes like this.
+
+457 of 1024 processors in use by local jobs (44.63%)
+32 of 32 nodes active      (100.00%)
+
+Right now every node has at least one processor in use. If you were to
+submit a job asking for 32 processors it would end up queued until one
+node became 100% idle. Starting a 20 processor job should start up right
+away.
+
+If a job doesn't start you can check it's status by running checkjob
+followed by the jobid. The jobid is displayed when running showq.
+
+Using multiple nodes is only beneficial if for instance you need lots of
+resources like 500GB or memory or 100 processors for a program to run.
+If you are running a 20 processor job with less than 128GB of memory you
+are fine to set the PBS option to "#PBS -l nodes=1:ppn=20". You could
+then run 7 jobs like that at once.

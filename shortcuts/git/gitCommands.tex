@@ -1,0 +1,37 @@
+\documentclass[11pt,twocolumn]{article}
+
+\begin{document}
+	Git Commands
+	\begin{itemize}
+		\item List Config: [git config --list]
+		\item Diff working and staged [git diff]
+		\item Diff staged and last commit [git diff --staged]
+		\item Add to staging area [git add $<$file$>$]
+		\item Commit (after adding) [git commit]
+		\item Stage and commit all tracked files [git commit -a]
+		\item View commits [git log]
+		\item Unstage [git reset HEAD $<$file$>$]
+		\item Unmodify [git checkout $<$file$>$]
+		\item check remote branch [git remote -v]
+		\item Push to remote [git push [remote-name] [local-name]]
+		\item Tagging [git tag -a [tag-name] -m [tag-description]]
+		\item Push a tag [git push [remote-branch] [tag-name]]
+		\item Command aliases [git config --global alias.[name] `[command]`]
+		\item Merging [git merge [branch-name]]
+		\item Pulling (fetch then merge) [git pull [remote-branch] [local-branch]]
+		\item Merge Conflicts
+		\begin{itemize}
+			\item Check merge conflict [git status]
+			\item Conflicted files identified by [unmerged: $<$file$>$]
+			\item Edit conflicted file to solve conflict
+			\item Add resolved file (git marks as resolved)
+		\end{itemize}
+		\item Check who modified files [git blame]
+	\end{itemize}
+	Gitignore
+	\begin{itemize}
+		\item Ignore .a files [*.a]
+		\item ...except lib.a [!lib.a]
+		\item Ignore .txt in doc root [doc/*.txt]
+	\end{itemize}
+\end{document}

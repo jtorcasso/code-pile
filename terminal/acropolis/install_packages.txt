@@ -1,0 +1,51 @@
+Hello Jake,
+
+I just wanted to follow up on a few things we were talking about
+yesterday. There are two different versions of python available on
+Acropolis. The default "python" which is 2.6.6 and "python2.7" which is
+version 2.7.3.
+
+You are welcome to install python modules locally in your home
+directory. There is a utility called easy_install-2.7 which will help
+with the installation.
+
+First you will need to pick a place in your home directory to install
+your modules. For example create a directory called python in your home
+directory.
+
+mkdir ~/python
+
+You will then add this directory to your PYTHONPATH and PATH global
+variables. Add the following two lines to a file called .profile in your
+home directory.
+
+export PYTHONPATH=/home/jtorcasso/python:$PYTHONPATH
+export PATH=/home/jtorcasso/python:$PATH
+
+Log out of acropolis and back in for the changes to take affect. You can
+check the variables to be sure they are set properly.
+
+echo $PATH
+echo $PYTHONPATH
+
+Now use easy install for python 2.7 to install a module.
+
+easy_install-2.7 --install-dir=/home/jtorcass/python PackageName
+
+Once the installation has finished you will be able to call numpy in
+python2.7.
+
+
+Please try these steps and it should install.
+
+easy_install-2.7 --install-dir=/home/jtorcasso/python2.7 cython
+easy_install-2.7 --install-dir=/home/jtorcasso/python2.7 pandas
+easy_install-2.7 --install-dir=/home/jtorcasso/python2.7 patsy
+
+wget https://github.com/statsmodels/statsmodels/archive/v0.5.0.tar.gz
+tar -xzvf v0.5.0
+cd statsmodels-0.5.0/
+
+python2.7 setup.py install --prefix=/home/jtorcasso/python2.7
+
+Add /home/jtorcasso/python2.7/lib/python2.7/site-packages to your python path

@@ -1,0 +1,391 @@
+
+\documentclass{article}
+
+\usepackage[margin=0.5in]{geometry}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{framed}
+
+
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+\begin{document}
+
+\section*{Motivation}
+
+The research process is a collection of tasks, sometimes performed by multiple 
+people, which combine, in the end, into a carefully structured, defensible 
+argument. Each task might require a different tool or person, and the 
+order in which the tasks take place often matters. Hence, a more formal 
+and well-planned research project combines the disparate tasks efficiently. 
+Part of this efficiency means the project's results are also reproducible, 
+and, as a result, more defensible. 
+
+Typical Tasks of the Empirical Researcher:
+
+\begin{itemize}
+\item retrieve/convert data
+\item clean/organize data
+\item run analyses
+\item generate figures and tables
+\item cater discussion and results to the empirical evidence
+\end{itemize}
+
+We should all be familiar to at least some of these tasks. Often different
+tools and people work optimally at different links in the chain. For instance, 
+you might use STATA to clean data, MATLAB to run analyses, Python to 
+generate figures and tables, and LateX to compile the containing paper. 
+Often you have research assistants cleaning the data, and PhDs running analyses and 
+discussing the results. You might be passing data back and forth, funneling 
+everything through different machines with different configurations, operating 
+systems, and installed software. The advantage of doing it this way is that each 
+program or person has a functional advantage at each leg of the project's journey. 
+However, all of this movement can increase the chances of error and slow your project
+down.
+
+In this tutorial, I plan on showing how you can use Python to manage your workflow
+efficiently. The concepts we will cover include:
+
+\begin{enumerate}
+\item Understanding how Python works with your file system
+\item Integrating Python with STATA, R, and LateX
+\item How to design your own modules for projects
+\item How to organize your project to use Python effectively
+\item Getting to know some of Python's useful packages for research
+\item Version Control
+\item waf and wscript
+\end{enumerate}
+\noindent \section*{How Python interacts with your file system}
+\begin{quote} 
+``I want it now! The meatloaf! 
+I never know what she's doing back there.''
+\end{quote}
+Ok, so how does Python bring you your meatloaf? And where are all of 
+the ingredients in the kitchen? Before integrating Python into your
+workflow you need to know where it gets packages and where it looks
+and writes files, and how to use these packages and files in your code.
+Let's find out where Python is looking on 
+your system for modules and packages. One place it looks is wherever 
+your environment variable, PYTHONPATH, points to. Let's print all the 
+paths in the PYTHONPATH using the os package. 
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{os}
+\PY{n}{paths} \PY{o}{=} \PY{n}{os}\PY{o}{.}\PY{n}{environ}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{PYTHONPATH}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{:}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{k}{for} \PY{n}{path} \PY{o+ow}{in} \PY{n}{paths}\PY{p}{:}
+    \PY{k}{print} \PY{n}{path}
+\end{Verbatim}
+\end{framed}
+    
+\noindent If you experienced a keyerror, have no fear, it just means this variable 
+is not set. There are other places Python looks for packages.   
+It will also look in your current working directory. 
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print} \PY{n}{os}\PY{o}{.}\PY{n}{getcwd}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{framed}
+    
+\noindent Let's try to import a module we have made. Saving the following code as `test\_module.py'
+in the directory you are using for this tutorial file:
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{crazyWord}\PY{p}{(}\PY{n}{string}\PY{p}{)}\PY{p}{:}
+    
+    \PY{k}{return} \PY{n}{string} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{, now that is a crazy word}\PY{l+s}{\PYZsq{}}
+\end{Verbatim}
+\end{framed}
+    
+\noindent Let's try importing the module first with a different directory and then using the current directory
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{try}\PY{p}{:}
+    \PY{n}{current\PYZus{}directory} \PY{o}{=} \PY{n}{os}\PY{o}{.}\PY{n}{getcwd}\PY{p}{(}\PY{p}{)}
+    \PY{n}{os}\PY{o}{.}\PY{n}{chdir}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{..}\PY{l+s}{\PYZbs{}}\PY{l+s}{..}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+    \PY{k+kn}{import} \PY{n+nn}{test\PYZus{}module} \PY{k+kn}{as} \PY{n+nn}{testing}
+\PY{k}{except}\PY{p}{:}
+    \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Failed to find module in first directory}\PY{l+s}{\PYZdq{}}
+    \PY{n}{os}\PY{o}{.}\PY{n}{chdir}\PY{p}{(}\PY{n}{current\PYZus{}directory}\PY{p}{)}
+    \PY{k+kn}{import} \PY{n+nn}{test\PYZus{}module} \PY{k+kn}{as} \PY{n+nn}{testing}
+    \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Succeeded at finding module in }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n}{os}\PY{o}{.}\PY{n}{getcwd}\PY{p}{(}\PY{p}{)}
+\PY{k}{print} \PY{n}{testing}\PY{o}{.}\PY{n}{crazyWord}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{hippopotamus}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{framed}
+    
+\noindent Ok, so Python could not find the module when you changed the current working directory
+but after changing it back, it found it just fine. Python looks for modules in a certain
+order: first it looks in the current working directory, then it looks 
+in the paths contained in the environment variable PYTHONPATH, and then it looks for 
+them in the location in which your initial installation put packages and modules (where
+the standard library packages are). You can see where this original installation-dependent
+path is with the following:
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{sys}
+\PY{k}{for} \PY{n}{path} \PY{o+ow}{in} \PY{n}{sys}\PY{o}{.}\PY{n}{path}\PY{p}{:}
+    \PY{k}{print} \PY{n}{path}
+    
+\end{Verbatim}
+\end{framed}
+    
+\noindent Now what about files? Python looks for files in the current working directory. Let's try
+the following: first we create a file, then we save, and then we open it back up. 
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{new\PYZus{}file} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{a\PYZus{}text\PYZus{}file.txt}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{w}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{important\PYZus{}message} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{John Adams and Thomas Jefferson both died on July 4th, 1826}\PY{l+s}{\PYZsq{}}
+\PY{n}{new\PYZus{}file}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{n}{important\PYZus{}message}\PY{p}{)}
+\PY{n}{new\PYZus{}file}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
+\PY{k}{print} \PY{n}{os}\PY{o}{.}\PY{n}{getcwd}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{framed}
+    
+\noindent Let's look at the files in the current directory.
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{filename} \PY{o+ow}{in} \PY{n}{os}\PY{o}{.}\PY{n}{listdir}\PY{p}{(}\PY{n}{os}\PY{o}{.}\PY{n}{getcwd}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+    \PY{k}{print} \PY{n}{filename}
+\end{Verbatim}
+\end{framed}
+    
+\noindent You see the file we just created is in there. Open it. 
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{old\PYZus{}file} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{a\PYZus{}text\PYZus{}file.txt}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{r}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{framed}
+    
+\noindent Read the text contained in the file
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{text\PYZus{}from\PYZus{}file} \PY{o}{=} \PY{n}{old\PYZus{}file}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}
+\PY{k}{print} \PY{n}{text\PYZus{}from\PYZus{}file}
+\end{Verbatim}
+\end{framed}
+    
+\noindent Why is all of this important? Because what we want to integrate
+outside scripts and datasets into our projects, we want to 
+be able to tie together modules or scripts from other programming
+languages and we must understand how Python will find and work with these
+files. Thus far, we learned how Python looks for outside files and packages, 
+how to write and read files, and how to create and use a Python module of 
+our own. 
+\section*{Running Code from Other Languages in Python}
+First of all, why do we even continue to use other languages if Python is so great? 
+Several reasons: (i) other languages might have syntactical advantages 
+over Python (STATA for data cleaning as an example), (ii) Python might 
+not have good packages for some types of analyses, and (iii) not everybody
+knows Python, but if you work with people who use STATA primarily you can still
+integrate their code into the project. Let's see how it's done. 
+The first method uses the terminal or command line. Let's create a stata file. 
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{stata\PYZus{}code} \PY{o}{=} \PY{l+s}{\PYZsq{}\PYZsq{}\PYZsq{}}
+\PY{l+s}{clear all}
+\PY{l+s}{set obs 5}
+\PY{l+s}{gen column1 = 3}
+\PY{l+s}{gen column2 = 4}
+\PY{l+s}{outsheet using fake\PYZus{}dataset.csv, comma replace}
+\PY{l+s}{clear all}
+\PY{l+s}{\PYZsq{}\PYZsq{}\PYZsq{}}
+\PY{n}{stata\PYZus{}file} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{fake\PYZus{}statafile.do}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{w}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{stata\PYZus{}file}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{n}{stata\PYZus{}code}\PY{p}{)}
+\PY{n}{stata\PYZus{}file}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{framed}
+    
+\noindent And let's run the stata code from Python
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{subprocess}
+\PY{c}{\PYZsh{}Path to the executable (your path is probably different)}
+\PY{c}{\PYZsh{}stata\PYZus{}executable\PYZus{}path = r\PYZsq{}/usr/local/stata12/stata\PYZhy{}mp\PYZsq{}}
+\PY{c}{\PYZsh{}Call STATA through command line}
+\PY{c}{\PYZsh{}subprocess.call([stata\PYZus{}executable\PYZus{}path, r\PYZsq{}/e\PYZsq{}, \PYZsq{}do\PYZsq{}, \PYZsq{}fake\PYZus{}statafile.do\PYZsq{}])}
+\end{Verbatim}
+\end{framed}
+    
+\noindent If the call worked, you should see a dataset in your current directory
+called fake\_dataset.csv
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{filename} \PY{o+ow}{in} \PY{n}{os}\PY{o}{.}\PY{n}{listdir}\PY{p}{(}\PY{n}{os}\PY{o}{.}\PY{n}{getcwd}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+    \PY{k}{print} \PY{n}{filename}
+\end{Verbatim}
+\end{framed}
+    
+\noindent \section*{The Power of Python}
+Python is so powerful because of how it fosters community and cooperation. 
+The community serves not only as a potent source of information but a source
+of tried and tested tools. We call these tools third party packages. And no, 
+they aren't the shady dealings of the underworld, they are written by talented
+programmers eager to share the fruits of their labor with the world. Consider 
+two popular packages for data analysis: Numpy and Pandas
+
+\paragraph{Numpy} Numpy or numerical Python works with arrays and is great for
+raw data. It's libraries were written in optimally in C, so it's super fast. 
+
+\paragraph{Pandas} Pandas has all the dataset functionality as R. In fact, it 
+was modeled off of R and uses the dataframe. It provides functionality for 
+SQL-like merges and is great to partner with Numpy. Typically, I work 
+at the higher-level in Pandas and then when I run analyses I convert
+dataframes into arrays. First let's create a dataset to work with
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{fake\PYZus{}csvtext} \PY{o}{=} \PY{l+s}{\PYZsq{}\PYZsq{}\PYZsq{}}\PY{l+s}{id,column1,column2,column3}
+\PY{l+s}{1,10203.0,49495.494,\PYZhy{}9999}
+\PY{l+s}{2,3242.44,4404.405,333304.454}
+\PY{l+s}{3,22323,454545,454.44}
+\PY{l+s}{4,\PYZhy{}9999,4944959,454.54}
+\PY{l+s}{5,1123.123,34343.49,454.454}
+\PY{l+s}{6,49923.3434,99585.454,23230.445}
+\PY{l+s}{\PYZsq{}\PYZsq{}\PYZsq{}}
+\PY{n}{fake\PYZus{}csvfile} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{fake\PYZus{}csvfile.csv}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{w}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{fake\PYZus{}csvfile}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{n}{fake\PYZus{}csvtext}\PY{p}{)}
+\PY{n}{fake\PYZus{}csvfile}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{framed}
+    
+\noindent Now we can work with our dataset in Pandas and Numpy
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+\PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{fake\PYZus{}csvfile.csv}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{index\PYZus{}col} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{na\PYZus{}values} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{9999}\PY{p}{)}
+\PY{k}{print} \PY{n}{data}
+\PY{k}{print} \PY{n}{data}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{column1}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+\PY{k}{print} \PY{n}{data}\PY{p}{[}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{column1}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{column3}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+\end{Verbatim}
+\end{framed}
+    
+\noindent Now let's take the data from pandas and use numpy with statsmodels to quickly run analyses
+
+\begin{framed}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{nonmissing\PYZus{}data} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{o}{\PYZti{}}\PY{n}{np}\PY{o}{.}\PY{n}{isnan}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}
+\PY{n}{numpy\PYZus{}array} \PY{o}{=} \PY{n}{nonmissing\PYZus{}data}\PY{o}{.}\PY{n}{as\PYZus{}matrix}\PY{p}{(}\PY{p}{)}
+\PY{k}{print} \PY{n}{numpy\PYZus{}array}
+\PY{k+kn}{import} \PY{n+nn}{statsmodels.api} \PY{k+kn}{as} \PY{n+nn}{sm}
+\PY{n}{Y} \PY{o}{=} \PY{n}{numpy\PYZus{}array}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+\PY{n}{X} \PY{o}{=} \PY{n}{numpy\PYZus{}array}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{]}
+\PY{k}{print} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{o}{.}\PY{n}{\PYZus{}\PYZus{}doc\PYZus{}\PYZus{}}
+\PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{X}\PY{p}{)}\PY{p}{)}
+\PY{k}{print} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{o}{.}\PY{n}{\PYZus{}\PYZus{}doc\PYZus{}\PYZus{}}
+\PY{n}{model} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{Y}\PY{p}{,} \PY{n}{X}\PY{p}{)}
+\PY{n}{results} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+\PY{k}{print} \PY{n}{sm}\PY{o}{.}\PY{n}{regression}\PY{o}{.}\PY{n}{linear\PYZus{}model}\PY{o}{.}\PY{n}{RegressionResults}\PY{o}{.}\PY{n}{\PYZus{}\PYZus{}doc\PYZus{}\PYZus{}}
+\PY{k}{print} \PY{n}{results}\PY{o}{.}\PY{n}{params}
+\PY{k}{print} \PY{n}{results}\PY{o}{.}\PY{n}{resid}
+\PY{k}{print} \PY{n}{results}\PY{o}{.}\PY{n}{rsquared\PYZus{}adj}
+\PY{k}{print} \PY{n}{results}\PY{o}{.}\PY{n}{pvalues}
+\PY{k}{print} \PY{n}{results}\PY{o}{.}\PY{n}{fittedvalues}
+\end{Verbatim}
+\end{framed}
+    
+\end{document}

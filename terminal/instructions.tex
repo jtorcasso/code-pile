@@ -1,0 +1,186 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\newgeometry{left=2cm, right=2cm}
+
+\begin{document}
+Here I'll provide some steps for installing ubuntu 13.04 and configuring it for
+use at the Economics Research Center. Keep in mind through not to copy and paste commands, as copying from the pdf might not copy the correct characters. Also, whenever a double-dash appears like ``- -'', you should
+type two consecutive dashes. 
+
+\begin{enumerate}
+\item First create a bootable usb drive containing from the appropriate .iso install file
+and a usb/startup disk creator. Instructions on how to create this drive are provided on
+the \href{http://www.ubuntu.com/download/desktop}{ubuntu website}. 	
+
+\item Then reboot your computer with the usb stick attached, open the boot options menu
+during startup and select the usb drive. 
+
+\item You are now booting from the usb. Follow the instructions for installation. Make
+sure, if you plan on duel booting, to ``install ubuntu alongside Windows''. Also make
+sure to install updates and 3rd party software while installing ubuntu. 
+
+\item Now that you've installed Ubuntu it's time to configure it so you can get to work. First
+go into terminal (Ctrl + Alt + T) and type ``sudo apt-get update'' to update your machine once again. The ``sudo'' command is used to give permissions to the current user because in some cases a command requires the permissions of another user (like root or admin). If you ever see an error when you use a command and it has to do with permissions, try using ``sudo'' to run the command as root. First, let's 
+install R onto your computer. Enter the following commands into terminal:
+	
+	\begin{itemize}
+		 \item gpg - -keyserver keyserver.ubuntu.com - -recv-key E084DAB9
+		 \item gpg -a - -export E084DAB9 $\mid$ sudo apt-key add -
+		 \item sudo gedit /etc/apt/sources.list
+
+		 and append the following to the end of this file:
+
+		 deb http://cran.cnr.berkeley.edu/bin/linux/ubuntu precise/
+
+		 Essentially, you have just told the ``apt-get'' package to look for 
+		 package updates for R at this location. I chose Berkeley because
+		 they should reguarly update the scientific packages we use.
+
+		 \item sudo apt-get update
+		 \item sudo apt-get install r-base
+		 \item R should now work, type ``R'' in the terminal to see if the R console comes up. 
+
+	\end{itemize}
+\item Now install the rpy2 package (a package for creating R objects in Python), type the following command:
+
+sudo apt-get install python-rpy2
+
+\item Now let's map your computer's drive system to athens. NOTE: This is after you gain access to the University Network, 
+if you are at home you would first need to vpn into the network. I will explain how to do this in the next step.
+
+	\begin{itemize}
+		\item  sudo gedit /etc/fstab
+
+		Modifying this file will tell your computer what drives to mount. Add the following text to the
+		end of this document: ``//128.135.47.237/klmshare /home/$<$UbuntuUser$>$/Klmshare cifs username=$<$Athens ID$>$,password=$<$Athens Password$>$,uid=$<$UbuntuUser$>$,defaults 0 0 ''
+		Make sure to substitute your appropriate username and passwords for $<$UbuntuUser$>$, $<$Athens ID$>$, and $<$Athens Password$>$. The $<$Athens ID$>$ and $<$Athens Password$>$ are the
+		username and password you would use to access athens. $<$UbuntuUser$>$ is your ubuntu user name. It is the name before the ``@'' symbol in terminal. 
+		
+		\item mkdir $\sim$/Klmshare
+
+		\item sudo apt-get install cifs-utils
+
+		Now if you remount your drives you should mount klmshare. 
+
+		\item sudo mount -a
+
+	\end{itemize}
+
+\item Let's setup vpn (for those users on a machine they use outside the University of Chicago campus)
+
+	\begin{itemize}
+		\item First, request the service if you have not already done so \href{https://cvpn.uchicago.edu/}{here}. Login to the website. 
+		\item Download the cisco vpn client. It puts a shell script into your Downloads folder. To run the installation 
+		script type the following command into terminal: ``sh $\sim$/Downloads/vpnsetup.sh''.
+		\item Now open Cisco VPN Client and connect to ``cvpn.uchicago.edu''.
+		\item After you vpn into the network you will be able to mount the klmshare folder to your computer. 
+	\end{itemize}
+
+\item Editing your environment variables. We use two environment variables at the Economics Research Center. One is called
+``klmshare'' and the other is ``erc''. ``klmshare'' is the path to your mounted Klmshare drive: ``/home/$<$UbuntuUser$>$/Klmshare''. 
+``erc'' is the path to your root folder for work in the erc. Within the ``erc'' folder you should put the folder ``ercprojects''. To create
+directories at these locations use the ``mkdir $<$foldername$>$'' command. To create these environment variables follow these steps:
+
+	\begin{itemize}
+		\item sudo gedit $\sim$/.pam\_environment
+
+		Then add the following text:
+		\begin{tabular}{l}
+			rpath DEFAULT=/usr/bin/Rscript \\
+			statapath DEFAULT=/usr/local/stata12/xstata-mp \\
+			klmshare DEFAULT=/home/$<$UbuntuUser$>$/Klmshare \\
+			erc DEFAULT=$<$location of erc folder$>$ \\
+		\end{tabular}
+
+		\item restart your computer for these environment variables to take effect. To test
+		an environment variable simply type ``echo \$$<$name of variable$>$'' and see if the terminal
+		returns the correct path from the previous step. 
+	\end{itemize}
+
+\item Installing STATA. 
+
+	\begin{itemize}
+		\item Make sure you are mounted to Klmshare.
+		\item sudo mkdir /usr/local/stata12
+		\item cd /usr/local/stata12
+		\item Next you will run the install script. In the install options
+		make sure you use stata for linux when prompted. 
+		\item $\sim$/Klmshare/Stata12/install
+		\item Then follow the instructions for installation (you should install stata-mp)
+		\item After installation is will ask you to run stinit. Run this
+		using ``sudo ./stinit''
+		\item then create the following desktop file, by first typing ``sudo gedit /usr/share/applications/stata12.desktop'', 
+		and then adding the following to the file:
+		\begin{tabular}{l}
+			[Desktop Entry] \\
+			Version= 12.1 \\
+			Terminal=false \\
+			Icon=/usr/local/stata12/stata12.png \\
+			Type=Application \\
+			Categories=Education;Scientific; \\
+			Exec=/usr/local/stata12/xstata-mp \\
+			MimeType=application/x-stata-dta;application/x-stata-do; \\
+			Name=Stata/MP 12 \\
+			Comment=Perform statistical analyses using Stata. \\
+		\end{tabular}
+
+		\item If the installation worked properly you should be able to open stata by typing ``\$statapath''. 
+	\end{itemize}
+
+\item Installing and configuring Eclipse (IDE)
+
+	\begin{itemize}
+		\item open up ``Ubuntu Software Center''
+		\item search for ``eclipse'' and install the version that says something like ``extensible tool platform and ide''
+		\item Once installed, launch eclipse and we will install the PyDev plugin (for Python). 
+		\item Navigate to Help -> Install New Software. In work with, type: ``PyDev - http://pydev.org/updates'' and press ``add...''
+		\item then check the first option, ``PyDev'', and click next. Accept the agreement. 
+		\item When the ``Selection Needed'' dialogue box appears, select the only entry and select ``ok''. 
+		\item Now we will tell eclipse which Interpreter to use for python. go to Window -> Preferences, expand PyDev and select
+		Interpreter-Python. Click ``New...'' and type ``Python27''. Then for the path of the executable, type ``/usr/local/bin/python2.7''. 
+		\item Then click ``ok'' until done. 
+		\item To test the configuration restart eclipse and go to File->New->Project. Select PyDev->PyDev project. Create a project called ``HelloWorld'' and
+		select the interpreter name you just created, ``Python27''. Tell it not to configure the PYTHONPATH. Then click ``finish''. 
+		\item change the perspective to PyDev (Window->Open Perspective->Other) and select PyDev. 
+		\item right-click on the HelloWorld folder on the right and create a new file called ``HelloWorld.py''. Then add ``print ``Hello World!'''' to the file. 
+		\item Hit the green play button, at the bottom, ``Hello World!'' should appear. 
+		\item If you want to add the C plugin do the following. 
+		\item Go to help->install software. Type ``http://download.eclipse.org/tools/cdt/releases/helios'' and then click ``add...''. Follow similar steps to PyDev. 
+		\item to test the installation create a c project called ``HelloWorld''. Create a file in it called ``HelloWorld.c''. Then put the following code into the file:
+		\begin{tabular}{l}
+			$\#$include$<$stdio.h$>$ \\
+			int main() \{ \\
+				printf(``Hello World!''); \\
+				return 0; \\
+			\} \\
+		\end{tabular}
+		\item Then right click on the project folder and click ``Build Project'', then go to Run As -> Local C/C++ Application. You should hopefully see ``Hello World'' displayed in the console. 
+	\end{itemize}
+
+\item Now let's go ahead and get the ``ercTools'' repository on your machine. It contains tools for making tables in python and also for drawing datalabels and value labels from stata into Python. 
+
+\item cd \$erc
+
+\item sudo apt-get install git
+
+\item git clone ssh://$<Athens ID>$@athensx.uchicago.edu/share/klmshare/ercTools
+
+\item Now let's add Sublime-Text-2 for our latex editor (also for Python and anything to do with text/code). 
+
+\item sudo add-apt-repository ppa:webupd8team/sublime-text-2
+
+\item sudo apt-get update
+
+\item sudo apt-get install sublime-text
+
+\item sudo apt-get install latexmk
+
+\item Here is a good \href{http://www.practicallyefficient.com/home/2012/11/29/working-with-latex-in-sublime-text-2}{tutorial} for learning LateX editing in Sublime-text-2. 
+
+\item You should be able to run Python scripts immediately from Sublime-Text as well. It is great for smaller, medium size Python projects. 
+
+\end{enumerate}
+
+\end{document}

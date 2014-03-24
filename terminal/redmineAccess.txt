@@ -1,0 +1,19 @@
+Setting up Redmine server repositories.
+
+1) Edit certificates:
+
+mkdir ~/Downloads/incommon
+cd ~/Downloads/incommon
+wget http://cert.incommon.org/InCommonServerCA.crt
+openssl x509 -inform DER -in InCommonServerCA.crt -out incommon.pem
+cat /etc/ssl/certs/ca-certificates.crt incommon.pem > ca-certs.crt.new
+sudo cp -pa /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt.bak
+sudo cp ca-certs.crt.new /etc/ssl/certs/ca-certificates.crt
+
+2) Check account status by signing in at: https://klondike.uchicago.edu/
+
+3) Clone the repository, first navigate to the proper directory then:
+
+git clone https://jtorcasso@klondike.uchicago.edu/git/hsis-evaluation
+
+git clone https://jtorcasso@klondike.uchicago.edu/git/erc-tools

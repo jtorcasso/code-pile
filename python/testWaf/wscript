@@ -1,0 +1,23 @@
+top = '.'
+out = '.'
+
+pybuild = 'python ${SRC}'
+
+def configure(ctx):
+
+	ctx.load('tex')
+	ctx.load('python')
+
+def build(ctx):
+	
+	ctx(
+		rule = pybuild,
+		features = 'pyext',
+		source = 'createPlot.py')
+
+	ctx.add_group()
+
+	ctx(
+		features = 'tex', 
+		source = 'testWaf.tex',
+		)

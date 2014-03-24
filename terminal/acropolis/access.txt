@@ -1,0 +1,84 @@
+Hello Yike and Jorge,
+
+I was nice meeting you today. Just to follow up here are some examples
+on how to connect to Acropolis. Connecting to athens is very similar.
+
+Logging into Acropolis from the command line on OSX and Ubuntu is about
+the same. You will open a terminal and use the ssh command to log in.
+
+ssh username@acropolis.uchicago.edu
+
+Once you have logged into the system you can run command line programs
+such as "python" or "R". You may run graphical versions of programs such
+as "xstata" "matlab" or the newly installed "spyder" by forwarding a
+graphical connection over ssh.
+
+On Ubuntu
+ssh -X username@acropolis.uchicago.edu
+
+On OSX
+ssh -Y username@acroplis.uchicago.edu
+
+This is fine for programs that will take a short time to run. If you
+disconnect your ssh session your graphical program will stop running. In
+this case for graphical programs that will take a long time to run you
+are better off with VNC.
+
+The VNC client will open a full linux desktop which you can disconnect
+from and reconnect to and leave your programs running. The client can be
+found at the following link. For Windows or OSX you will want to use the
+EasyVNC client. Once installed it will give you a list of SSCS servers.
+You then enter your user name and password and it will take care of
+starting the vnc session and connecting to the system.
+
+https://sw.src.uchicago.edu/
+
+Ubuntu is a bit more complicated. You will need the VNC Viewer 64bit
+client from the above link.
+
+1. ssh into acropolis and start the "vncserver" process. You only need
+to do this the first time you use VNC. If the server is rebooted or if
+you kill or have your vncserver session crash then you would need to
+rerun vncserver.
+ssh smohr@acropolis.uchicago.edu
+vncserver
+
+2. Run "vncserver -machelp" this will tell you how to connect from a mac
+but the steps are the same from Ubuntu. The machelp directions will
+provide you with something like the following to open the ssh tunnel.
+You will need to open a new terminal on your machine and run this. Be
+sure you are not already logged into Acropolis in your terminal
+session.
+
+ssh -L 5947:localhost:5947 smohr@acropolis.uchicago.edu
+
+3. Execute the vnc client you downloaded from the above link and log in
+with the localhost:portnumber provided by "vncserver -machelp".
+
+
+There are a few ways to transfer files to the server. You may map a
+network drive. Info about this can be found on our website. Keep in mind
+you need to connect to the VPN if you are off campus.
+https://cvpn.uchicago.edu/+CSCOE+/logon.html.
+
+You can also use scp which is the same on OSX or Ubuntu. This is how I
+would upload a directory called acropolisstuff to my home directory on
+the server.
+
+scp -rp acropolisstuff smohr@acropolis.uchicago.edu:/home/smohr/
+
+download a directory from the server to my home directory.
+
+scp -rp smohr@acropolis.uchicago.edu:/home/smohr/acropolisstuff .
+
+Be careful using scp. If you have a directory on the server or your
+computer with the same name you could possibly overwrite it.
+
+I also showed you an sftp client called Filezilla. This and scp do not
+require a VPN connection when off campus. You can download it for OSX
+from https://filezilla-project.org/. It's available in Ubuntu by running
+"sudo apt-get install filezilla".
+
+There are a few different ways to do everything on these servers. If
+it's a bit confusing let me know and I'll help you out. If you have any
+other questions let me know.

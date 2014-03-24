@@ -1,0 +1,868 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tabular Classes for PyTabular Package &mdash; PyTabular 0.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyTabular 0.1.3 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="pytabular.html">PyTabular 0.1.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-pytabular.core.tables"></span><div class="section" id="tabular-classes-for-pytabular-package">
+<h1>Tabular Classes for PyTabular Package<a class="headerlink" href="#tabular-classes-for-pytabular-package" title="Permalink to this headline">¶</a></h1>
+<p>Superclasses:</p>
+<ul class="simple">
+<li>TabularBase</li>
+<li>Tabular2D</li>
+<li>Tabular1D</li>
+</ul>
+<p>Classes for User:</p>
+<ul class="simple">
+<li>TabularCell</li>
+<li>Tabular</li>
+<li>Table</li>
+<li>LongTable</li>
+</ul>
+<p>Issues:</p>
+<ul class="simple">
+<li>Should use regular expressions to handle LateX special characters when
+initializing TabularCell instances</li>
+</ul>
+<dl class="class">
+<dt id="pytabular.core.tables.LongTable">
+<em class="property">class </em><tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">LongTable</tt><big>(</big><em>content</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.LongTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>class for LateX longtables</p>
+<dl class="method">
+<dt id="pytabular.core.tables.LongTable.set_caption">
+<tt class="descname">set_caption</tt><big>(</big><em>caption</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.LongTable.set_caption" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets caption for the table</p>
+<dl class="docutils">
+<dt>caption <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>caption of the table</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.LongTable.set_label">
+<tt class="descname">set_label</tt><big>(</big><em>label</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.LongTable.set_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets label for the table</p>
+<dl class="docutils">
+<dt>label <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>label for the table</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.LongTable.set_location">
+<tt class="descname">set_location</tt><big>(</big><em>loc='c'</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.LongTable.set_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>horizontal location (justification) of table</p>
+<dl class="docutils">
+<dt>loc <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>&#8216;c&#8217; for center, &#8216;l&#8217; for left and &#8216;r&#8217; for right</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.LongTable.set_repeats">
+<tt class="descname">set_repeats</tt><big>(</big><em>repeats</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.LongTable.set_repeats" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets number of rows to repeat</p>
+<dl class="docutils">
+<dt>repeats <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>number of rows to repeat on each page</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pytabular.core.tables.Table">
+<em class="property">class </em><tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">Table</tt><big>(</big><em>content</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Table" title="Permalink to this definition">¶</a></dt>
+<dd><p>class for LateX tables</p>
+<dl class="method">
+<dt id="pytabular.core.tables.Table.as_tex">
+<tt class="descname">as_tex</tt><big>(</big><big>)</big><a class="headerlink" href="#pytabular.core.tables.Table.as_tex" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates tex string for the row</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Table.set_caption">
+<tt class="descname">set_caption</tt><big>(</big><em>caption</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Table.set_caption" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets caption for the table</p>
+<dl class="docutils">
+<dt>caption <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>caption of the table</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Table.set_label">
+<tt class="descname">set_label</tt><big>(</big><em>label</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Table.set_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets label for the table</p>
+<dl class="docutils">
+<dt>label <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>label for the table</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Table.set_location">
+<tt class="descname">set_location</tt><big>(</big><em>loc='c'</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Table.set_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>horizontal location (justification) of table</p>
+<dl class="docutils">
+<dt>loc <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>&#8216;c&#8217; for center, &#8216;l&#8217; for left and &#8216;r&#8217; for right</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pytabular.core.tables.Tabular">
+<em class="property">class </em><tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">Tabular</tt><big>(</big><em>content</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular" title="Permalink to this definition">¶</a></dt>
+<dd><p>end-user class for LateX tabular environment</p>
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular.add_environment">
+<tt class="descname">add_environment</tt><big>(</big><em>env</em>, <em>post=''</em>, <em>prepend=False</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular.add_environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds an environment around tabular</p>
+<dl class="docutils">
+<dt>env <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>name of latex environment, e.g. &#8216;center&#8217;</dd>
+<dt>post <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>text to add after the initializion of environment</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular.add_note">
+<tt class="descname">add_note</tt><big>(</big><em>notes</em>, <em>fontsize='scriptsize'</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular.add_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets the footnotes for the table</p>
+<dl class="docutils">
+<dt>notes <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>notes to put in table</dd>
+<dt>fontsize <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>LateX fontsize, e.g. &#8216;tiny&#8217;, &#8216;large&#8217;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular.as_tex">
+<tt class="descname">as_tex</tt><big>(</big><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular.as_tex" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates tex string for the row</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular.set_indent">
+<tt class="descname">set_indent</tt><big>(</big><em>indent</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular.set_indent" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets indentation for presentation of output</p>
+<dl class="docutils">
+<dt>indent <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>number of spaces to insert at indentation level</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular.set_tab_alignment">
+<tt class="descname">set_tab_alignment</tt><big>(</big><em>tabular</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular.set_tab_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets default alignment of tabular</p>
+<dl class="docutils">
+<dt>tabular <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>must have alignment character for each column in table
+ex. &#8216;cc&#8217;, &#8216;p{3cm}ll&#8217;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular.write">
+<tt class="descname">write</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>write table to file</p>
+<dl class="docutils">
+<dt>filename <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>name of file</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pytabular.core.tables.Tabular1D">
+<em class="property">class </em><tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">Tabular1D</tt><big>(</big><em>content</em>, <em>orientation=0</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>1-dimensional tabular</p>
+<dl class="docutils">
+<dt>orientation <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>0 if horizontal, 1 if vertical</dd>
+</dl>
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular1D.merge">
+<tt class="descname">merge</tt><big>(</big><em>force=False</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular1D.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>merges the 1-d tabular</p>
+<dl class="docutils">
+<dt>force <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>if True, forces merge over non-null cells, purges these cells</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pytabular.core.tables.Tabular2D">
+<em class="property">class </em><tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">Tabular2D</tt><big>(</big><em>content</em>, <em>rowfragment=True</em>, <em>colfragment=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>2-dimensional tabular</p>
+<p>To be used as a superclass for TabularRow and TabularColumn
+Also can be directly accessed by slicing a Table</p>
+<p>Must write over any methods in TabularBase which should 
+operate on a per cell basis</p>
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.flatten">
+<tt class="descname">flatten</tt><big>(</big><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns 1-d tabular of content</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.merge">
+<tt class="descname">merge</tt><big>(</big><em>force=False</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>merges the Tabular2D</p>
+<dl class="docutils">
+<dt>force <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>if True, forces merge over non-null cells, purges these cells</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_alignment">
+<tt class="descname">set_alignment</tt><big>(</big><em>alignment</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets alignment of tabular element</p>
+<dl class="docutils">
+<dt>alignment <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>alignment string in LateX
+ex: &#8216;c&#8217;, &#8216;l&#8217;, or &#8216;r&#8217;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_bold">
+<tt class="descname">set_bold</tt><big>(</big><em>bold=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_bold" title="Permalink to this definition">¶</a></dt>
+<dd><p>set to bold</p>
+<dl class="docutils">
+<dt>bold <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to bold</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_color">
+<tt class="descname">set_color</tt><big>(</big><em>color</em>, <em>opacity=50</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets color of cells</p>
+<dl class="docutils">
+<dt>color <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>name of a color, some examples include: 
+white, black, red, green, blue, cyan, magenta, yellow, gray</dd>
+<dt>opacity <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>int in [0,100]</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_digits">
+<tt class="descname">set_digits</tt><big>(</big><em>digits=3</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_digits" title="Permalink to this definition">¶</a></dt>
+<dd><p>gives value &#8216;digits&#8217; signficant digits</p>
+<dl class="docutils">
+<dt>digits <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>number of significant digits</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_emph">
+<tt class="descname">set_emph</tt><big>(</big><em>emph=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_emph" title="Permalink to this definition">¶</a></dt>
+<dd><p>set to emph</p>
+<dl class="docutils">
+<dt>emph <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to emph</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_fontsize">
+<tt class="descname">set_fontsize</tt><big>(</big><em>fontsize</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_fontsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets fontsize</p>
+<dl class="docutils">
+<dt>fontsize <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>font size for tabular element</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_formatter">
+<tt class="descname">set_formatter</tt><big>(</big><em>formatter</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_formatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets function to format content</p>
+<dl class="docutils">
+<dt>formatter <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>function to format the content, must return a string</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_lines">
+<tt class="descname">set_lines</tt><big>(</big><em>lines='_'</em>, <em>narrow=None</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds a horizontal line below the cell</p>
+<dl class="docutils">
+<dt>lines <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>&#8216;-&#8216;, &#8216;_&#8217; for single line, &#8216;=&#8217; for a double line</dd>
+<dt>narrow <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>&#8216;r&#8217;, &#8216;l&#8217;, or &#8216;lr&#8217;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_mergedcol">
+<tt class="descname">set_mergedcol</tt><big>(</big><em>mergedcol=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_mergedcol" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets cells to mergedcol</p>
+<dl class="docutils">
+<dt>mergedcol <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to hide element</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_mergedrow">
+<tt class="descname">set_mergedrow</tt><big>(</big><em>mergedrow=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_mergedrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets cells to mergedrow</p>
+<dl class="docutils">
+<dt>mergedrow <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to hide element</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_rotation">
+<tt class="descname">set_rotation</tt><big>(</big><em>angle</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets rotation</p>
+<dl class="docutils">
+<dt>angle <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>0 to 90</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_space_above">
+<tt class="descname">set_space_above</tt><big>(</big><em>space</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_space_above" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the spacing before a cell in a row</p>
+<dl class="docutils">
+<dt>space <span class="classifier-delimiter">:</span> <span class="classifier">str, int, float</span></dt>
+<dd>spacing to place after row (ex. &#8216;1cm&#8217;)</dd>
+</dl>
+<p>if numeric type give for <cite>space</cite>, assumes unit is &#8216;cm&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_space_below">
+<tt class="descname">set_space_below</tt><big>(</big><em>space</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_space_below" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the spacing after a cell in a row</p>
+<dl class="docutils">
+<dt>space <span class="classifier-delimiter">:</span> <span class="classifier">str, int, float</span></dt>
+<dd>spacing to place after row (ex. &#8216;1cm&#8217;)</dd>
+</dl>
+<p>if numeric type give for <cite>space</cite>, assumes unit is &#8216;cm&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_stars">
+<tt class="descname">set_stars</tt><big>(</big><em>side='left', levels=[0.1, 0.05, 0.01]</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_stars" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets cell to display significance stars</p>
+<dl class="docutils">
+<dt>side <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>&#8216;left&#8217; to apply on leftside of value, &#8216;right&#8217; to apply
+on right side</dd>
+<dt>levels <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>list for which to apply significance stars</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.Tabular2D.set_underline">
+<tt class="descname">set_underline</tt><big>(</big><em>underline=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.Tabular2D.set_underline" title="Permalink to this definition">¶</a></dt>
+<dd><p>set to underline</p>
+<dl class="docutils">
+<dt>underline <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to underline</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pytabular.core.tables.TabularBase">
+<em class="property">class </em><tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">TabularBase</tt><big>(</big><em>content</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>base tabular object</p>
+<dl class="docutils">
+<dt>content <span class="classifier-delimiter">:</span> <span class="classifier">scalar type</span></dt>
+<dd>str, int, float, long</dd>
+</dl>
+<dl class="method">
+<dt id="pytabular.core.tables.TabularBase.as_tex">
+<tt class="descname">as_tex</tt><big>(</big><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularBase.as_tex" title="Permalink to this definition">¶</a></dt>
+<dd><p>render the tabular element as text</p>
+<p>Must implement in subclass</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularBase.get_attr">
+<tt class="descname">get_attr</tt><big>(</big><em>attr='all'</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularBase.get_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns attribute(s) of the table element</p>
+<dl class="docutils">
+<dt>attr <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>attribute of the table element</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularBase.set_attr">
+<tt class="descname">set_attr</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularBase.set_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets attributes</p>
+<dl class="docutils">
+<dt>kwargs <span class="classifier-delimiter">:</span> <span class="classifier">keyword arguments</span></dt>
+<dd>attributes to set</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularBase.set_content">
+<tt class="descname">set_content</tt><big>(</big><em>content</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularBase.set_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets content of tabular element</p>
+<dl class="docutils">
+<dt>content <span class="classifier-delimiter">:</span> <span class="classifier">scalar type</span></dt>
+<dd>content to replace with</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pytabular.core.tables.TabularCell">
+<em class="property">class </em><tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">TabularCell</tt><big>(</big><em>content</em>, <em>loc</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>cell of a table</p>
+<p>** Attributes **
+shape : ()</p>
+<blockquote>
+<div>empty tuple</div></blockquote>
+<dl class="docutils">
+<dt>ndim <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>0</dd>
+<dt>rows <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>number of rows represented by cell (think multirow)</dd>
+<dt>columns <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>number columns represented by cell (think multicolumn)</dd>
+<dt>rotation <span class="classifier-delimiter">:</span> <span class="classifier">int or None</span></dt>
+<dd>None if not rotated, int between 0 and 90 degrees</dd>
+<dt>underline <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to underline, false otherwise</dd>
+<dt>bold <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to bold, false otherwise</dd>
+<dt>emph <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to emphasize (italics), false otherwise</dd>
+<dt>alignment <span class="classifier-delimiter">:</span> <span class="classifier">None</span></dt>
+<dd>None to retain alignment of outer environment, else specify 
+a string (e.g. &#8216;c&#8217;, &#8216;l&#8217; or &#8216;r&#8217;)</dd>
+<dt>formatter <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>Default is str, specify a function
+which takes a scalar type and outputs a string</dd>
+<dt>fontsize <span class="classifier-delimiter">:</span> <span class="classifier">int or None</span></dt>
+<dd>None to retain fontsize of outer environment, else specify 
+a string (e.g. &#8216;small&#8217;, &#8216;tiny&#8217;)</dd>
+<dt>phantom <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>If True, the tabular element will not produce any string</dd>
+<dt>hline <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>If True, places horizontal line below cell</dd>
+<dt>loc <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd>(row, col) coordinates in table</dd>
+</dl>
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.as_tex">
+<tt class="descname">as_tex</tt><big>(</big><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.as_tex" title="Permalink to this definition">¶</a></dt>
+<dd><p>render the tabular element as text</p>
+<dl class="docutils">
+<dt>val <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>string which LateX will recognize in tabular environment</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_alignment">
+<tt class="descname">set_alignment</tt><big>(</big><em>alignment</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets alignment of tabular element</p>
+<dl class="docutils">
+<dt>alignment <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>alignment string in LateX
+ex: &#8216;c&#8217;, &#8216;l&#8217;, or &#8216;r&#8217;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_bold">
+<tt class="descname">set_bold</tt><big>(</big><em>bold=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_bold" title="Permalink to this definition">¶</a></dt>
+<dd><p>set to bold</p>
+<dl class="docutils">
+<dt>bold <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to bold</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_color">
+<tt class="descname">set_color</tt><big>(</big><em>color</em>, <em>opacity=50</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets color of a cell</p>
+<dl class="docutils">
+<dt>color <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>name of a color, some examples include: 
+white, black, red, green, blue, cyan, magenta, yellow, gray</dd>
+<dt>opacity <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>int in [0,100]</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_digits">
+<tt class="descname">set_digits</tt><big>(</big><em>digits=3</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_digits" title="Permalink to this definition">¶</a></dt>
+<dd><p>gives value &#8216;digits&#8217; signficant digits</p>
+<dl class="docutils">
+<dt>digits <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>number of significant digits</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_emph">
+<tt class="descname">set_emph</tt><big>(</big><em>emph=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_emph" title="Permalink to this definition">¶</a></dt>
+<dd><p>set to emph</p>
+<dl class="docutils">
+<dt>emph <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to emph</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_fontsize">
+<tt class="descname">set_fontsize</tt><big>(</big><em>fontsize</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_fontsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets fontsize</p>
+<dl class="docutils">
+<dt>fontsize <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>font size for tabular element</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_formatter">
+<tt class="descname">set_formatter</tt><big>(</big><em>formatter</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_formatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets function to format content</p>
+<dl class="docutils">
+<dt>formatter <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>function to format the content, must return a string</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_lines">
+<tt class="descname">set_lines</tt><big>(</big><em>lines='_'</em>, <em>narrow=None</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds lines around cell</p>
+<dl class="docutils">
+<dt>lines <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>&#8216;-&#8216; or &#8216;_&#8217; for a single line, &#8216;=&#8217; for a double line
+if None, assures no line is printed</dd>
+<dt>narrow <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>&#8216;r&#8217;, &#8216;l&#8217;, &#8216;lr&#8217;, or &#8216;rl&#8217;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_mergedcol">
+<tt class="descname">set_mergedcol</tt><big>(</big><em>mergedcol=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_mergedcol" title="Permalink to this definition">¶</a></dt>
+<dd><p>means cell is merged into another col</p>
+<dl class="docutils">
+<dt>mergedcol <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to hide element</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_mergedrow">
+<tt class="descname">set_mergedrow</tt><big>(</big><em>mergedrow=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_mergedrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>means cell is merged into another row</p>
+<dl class="docutils">
+<dt>mergedrow <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to hide element</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_rotation">
+<tt class="descname">set_rotation</tt><big>(</big><em>angle</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets rotation</p>
+<dl class="docutils">
+<dt>angle <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>0 to 360</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_space_above">
+<tt class="descname">set_space_above</tt><big>(</big><em>space</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_space_above" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the spacing before the cell in row</p>
+<dl class="docutils">
+<dt>space <span class="classifier-delimiter">:</span> <span class="classifier">str, int, float</span></dt>
+<dd>spacing to place after row (ex. &#8216;1cm&#8217;)</dd>
+</dl>
+<p>if numeric type give for <cite>space</cite>, assumes unit is &#8216;cm&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_space_below">
+<tt class="descname">set_space_below</tt><big>(</big><em>space</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_space_below" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the spacing after the cell in row</p>
+<dl class="docutils">
+<dt>space <span class="classifier-delimiter">:</span> <span class="classifier">str, int, float</span></dt>
+<dd>spacing to place after row (ex. &#8216;1cm&#8217;)</dd>
+</dl>
+<p>if numeric type give for <cite>space</cite>, assumes unit is &#8216;cm&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_stars">
+<tt class="descname">set_stars</tt><big>(</big><em>side='left', levels=[0.1, 0.05, 0.01]</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_stars" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets cell to display significance stars</p>
+<dl class="docutils">
+<dt>side <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>&#8216;left&#8217; to apply on leftside of value, &#8216;right&#8217; to apply
+on right side</dd>
+<dt>levels <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>list for which to apply significance stars</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularCell.set_underline">
+<tt class="descname">set_underline</tt><big>(</big><em>underline=True</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularCell.set_underline" title="Permalink to this definition">¶</a></dt>
+<dd><p>set to underline</p>
+<dl class="docutils">
+<dt>underline <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True to underline</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pytabular.core.tables.TabularColumn">
+<em class="property">class </em><tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">TabularColumn</tt><big>(</big><em>content</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>tabular for a row</p>
+<dl class="method">
+<dt id="pytabular.core.tables.TabularColumn.merge">
+<tt class="descname">merge</tt><big>(</big><em>force=False</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularColumn.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>merges the row</p>
+<dl class="docutils">
+<dt>force <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>if True, forces merge over non-null cells, purges these cells</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pytabular.core.tables.TabularRow">
+<em class="property">class </em><tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">TabularRow</tt><big>(</big><em>content</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>tabular for a row</p>
+<dl class="method">
+<dt id="pytabular.core.tables.TabularRow.as_tex">
+<tt class="descname">as_tex</tt><big>(</big><em>indent=2</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularRow.as_tex" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates tex string for the row</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pytabular.core.tables.TabularRow.merge">
+<tt class="descname">merge</tt><big>(</big><em>force=False</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.TabularRow.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>merges the row</p>
+<dl class="docutils">
+<dt>force <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>if True, forces merge over non-null cells, purges these cells</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pytabular.core.tables.hstack">
+<tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">hstack</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.hstack" title="Permalink to this definition">¶</a></dt>
+<dd><p>stacks tabular objects horizontally</p>
+<dl class="docutils">
+<dt>args <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd>tabular objects, t1, t2, ...</dd>
+</dl>
+<dl class="docutils">
+<dt>tab <span class="classifier-delimiter">:</span> <span class="classifier">tabular instance</span></dt>
+<dd>a new table</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytabular.core.tables.vstack">
+<tt class="descclassname">pytabular.core.tables.</tt><tt class="descname">vstack</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#pytabular.core.tables.vstack" title="Permalink to this definition">¶</a></dt>
+<dd><p>stacks tabular objects vertically</p>
+<dl class="docutils">
+<dt>args <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd>tabular objects, t1, t2, ...</dd>
+</dl>
+<dl class="docutils">
+<dt>tab <span class="classifier-delimiter">:</span> <span class="classifier">tabular instance</span></dt>
+<dd>a new table</dd>
+</dl>
+</dd></dl>
+
+</div>
+<span class="target" id="module-pytabular.core.operators"></span><dl class="function">
+<dt id="pytabular.core.operators.texCommands">
+<tt class="descclassname">pytabular.core.operators.</tt><tt class="descname">texCommands</tt><big>(</big><big>)</big><a class="headerlink" href="#pytabular.core.operators.texCommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>tex commands required for tables</p>
+<dl class="docutils">
+<dt>tex <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>string to put in header of latex file</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-pytabular.core.formatting"></span><div class="section" id="formatters-for-package-pytabular">
+<h1>Formatters for Package PyTabular<a class="headerlink" href="#formatters-for-package-pytabular" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="pytabular.core.formatting.format_digits">
+<tt class="descclassname">pytabular.core.formatting.</tt><tt class="descname">format_digits</tt><big>(</big><em>digits=3</em><big>)</big><a class="headerlink" href="#pytabular.core.formatting.format_digits" title="Permalink to this definition">¶</a></dt>
+<dd><p>formatter creator for significant digits</p>
+<dl class="docutils">
+<dt>digits <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>number of significant digits</dd>
+</dl>
+<dl class="docutils">
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>function to formal a value to <cite>digits</cite> significant digits</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytabular.core.formatting.format_int">
+<tt class="descclassname">pytabular.core.formatting.</tt><tt class="descname">format_int</tt><big>(</big><em>val</em><big>)</big><a class="headerlink" href="#pytabular.core.formatting.format_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>formats an integer</p>
+<dl class="docutils">
+<dt>val <span class="classifier-delimiter">:</span> <span class="classifier">scalar type</span></dt>
+<dd>value to formatted</dd>
+</dl>
+<dl class="docutils">
+<dt>val <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>formatted value</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytabular.core.formatting.format_stars">
+<tt class="descclassname">pytabular.core.formatting.</tt><tt class="descname">format_stars</tt><big>(</big><em>side='left', levels=[0.1, 0.05, 0.01], formatter=&lt;type 'str'&gt;</em><big>)</big><a class="headerlink" href="#pytabular.core.formatting.format_stars" title="Permalink to this definition">¶</a></dt>
+<dd><p>formatter creator for significance stars</p>
+<dl class="docutils">
+<dt>levels <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>list for which to apply significance stars</dd>
+<dt>side <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>&#8216;left&#8217; to apply on leftside of value, &#8216;right&#8217; to apply
+on right side</dd>
+</dl>
+<dl class="docutils">
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>function to star value</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="pytabular.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tabular Classes for PyTabular Package</a></li>
+<li><a class="reference internal" href="#formatters-for-package-pytabular">Formatters for Package PyTabular</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/modindex.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="pytabular.html">PyTabular 0.1.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jake C. Torcasso.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
