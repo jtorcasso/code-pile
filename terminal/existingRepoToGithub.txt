@@ -1,0 +1,8 @@
+#Remember to replace USER and REPO.
+
+curl -u 'USER' https://api.github.com/user/repos -d '{"name":"REPO"}'
+
+git remote add origin https://github.com/USER/REPO.git
+
+git push -u origin master
+
