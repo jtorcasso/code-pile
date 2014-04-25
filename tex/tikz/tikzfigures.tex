@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds,fit,decorations.pathreplacing,positioning,arrows,petri,decorations.pathmorphing}
+
+\begin{document}
+    
+    % Setting Background Layers
+    \pgfdeclarelayer{background}
+    \pgfdeclarelayer{foreground}
+
+    % Giving stack order for backgrounds
+    \pgfsetlayers{background,foreground}
+    
+    % Begin Styles
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Figure 1
+    \tikzstyle{line} = [draw, -latex']
+    \tikzstyle{Level} = [draw, rectangle, text centered, text width=2.5cm,
+    fill=black!20, rounded corners]
+    \tikzstyle{Data} = [text width=6cm, node distance=5cm]
+
+    % Figure 2
+    \tikzstyle{commit}=[draw, rectangle, text centered, text width=0.5cm,
+        fill=green!20, rounded corners]
+    \tikzstyle{branch}=[draw, rectangle, text centered, text width=1cm,
+        fill=white, rounded corners]
+
+    % Figure 3
+    \tikzset{forestyle/.style = {rectangle, fill = black!20, thick, minimum width = 5cm, minimum height = 0.5cm, text width = 4.5cm, outer sep = 1mm}, 
+    backstyle/.style = {rectangle, fill = black, minimum width = 5cm, minimum height = 0.5cm}, 
+    pre/.style={<-, shorten <=1pt, >=stealth, ultra thick}}
+
+    % End Styles
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    % Figure 1
+    \begin{tikzpicture}[node distance = 1cm]
+
+      \begin{pgfonlayer}{foreground}
+
+        % Levels
+
+        \node (level) {Level};
+        \node [right of=level, node distance=4.5cm] (data) {Data Available};
+        \node [Level, below of=level] (federal) {Office of Head Start};
+        \node [Level, below of=federal] (grantee) {Grantee};
+        \node [Level, below of=grantee] (center) {Center of \\Randomization};
+        \node [Level, text centered, below of=center] (care) {Care Center};
+        \node [Level, below of=care, node distance=1.5cm] (class) {Classroom};
+        \node [Level, below of=class, node distance=1.5cm] (child) {Child};
+
+        % Data attributes
+
+        \node [Data, right of=grantee] (GranteeData) {Random Program ID};
+        \node [Data, right of=center] (CenterData) {Random Center ID};
+        \node [right of=care, text width=6cm, node distance = 5cm] (CareData) {Curriculum,
+        staff, funding, etc.};
+        \node [right of=class, text width=6cm, node distance = 5cm] (ClassData) 
+        {Teacher characteristics, rating of curriculum, compensation, education, etc.};
+        \node [right of=child, text width=6cm, node distance = 5cm] (ChildData) 
+        {Demographics, assessments, parent interview, teacher/care provider};
+
+
+        % Draw Edges
+
+        \path [line] (federal) -- (grantee);
+        \path [line] (grantee) -- (center);
+        \path [line] (center) -- (care);
+        \path [line] (care) -- (class);
+        \path [line] (class) -- (child);
+
+      \end{pgfonlayer}{foreground}
+
+      % Draw Background Shading
+
+      \begin{pgfonlayer}{background}
+
+        \path (federal.west |- federal.north)+(-0.1,0.1) node (a) {};
+        \path (ChildData.east |- ChildData.south)+(0,0) node (b) {};
+        \path [fill=black!10, draw=black!50, dashed] (a) rectangle (b);
+
+      \end{pgfonlayer}{background}
+
+    \end{tikzpicture}
+
+    % Figure 2
+    \begin{tikzpicture}
+        \begin{pgfonlayer}{foreground}
+            \begin{scope}[local bounding box=bb]
+                \node (server) {Pam's Repository};
+                \node [commit,below of=server] (c1) {C1};
+                \node [commit,below of=c1] (c2) {C2};
+                \node [commit,below of=c2] (c3) {C3};
+                \node [commit,below of=c3] (c6) {C6};
+                \node [commit,right of=c3,xshift=1cm] (c4) {C4};
+                \node [commit,below of=c4] (c5) {C5};
+                \node [commit,below of=c6] (c7) {C7};
+                \node [branch,left of=c7,xshift=-0.5cm] (master) {master};
+                \node [branch,right of=c5,xshift=0.5cm] (dev) {dev};
+                \node [branch,above of=master,rounded corners=false] (head) {HEAD};
+                
+
+                \draw [->] (c1) -- (c2);
+                \draw [->] (c2) -- (c3);
+                \draw [->] (c3) -- (c4);
+                \draw [->] (c3) -- (c6);
+                \draw [->] (c4) -- (c5);
+                \draw [->] (c6) -- (c7);
+                \draw [->] (c5) -- (c7);
+                \draw [->,very thick] (master) -- (c7);
+                \draw [->,very thick] (dev) -- (c5);
+                \draw [->,very thick] (head) -- (master);
+            \end{scope}                        
+        \end{pgfonlayer}{foreground}
+
+        \begin{pgfonlayer}{background}
+            \node [fill=blue!20,fit=(bb)] {};
+        \end{pgfonlayer}{background}
+
+    \end{tikzpicture}
+
+    % Figure 3
+    \begin{tikzpicture}
+
+        \begin{pgfonlayer}{foreground}
+            \node (fade1) at (-0.1, 0.1) [backstyle] {};
+            \node (step1) at (0,0) [forestyle] {\textbf{Fit} $M(Y)$ to $D^{obs}$};
+            \node (estimated) at (5,0)  {$\hat{Y}^{obs}$} edge [pre] (step1);
+
+            \node (fade2) at (0, -1.4) [backstyle] {} edge [pre] (step1);
+            \node (step2) at (0.1, -1.5) [forestyle] {\textbf{Simulate} $D^{syn}(M(\hat{Y}^{obs}))$};
+
+            \node (fade3) at (0.1, -2.9) [backstyle] {} edge [pre] (step2);
+            \node (step3) at (0.2, -3) [forestyle] {\textbf{Fit} $M(Y)$ to $D^{syn}(M(Y))$};
+            \node (synthetic) at (5,-3) {$\hat{Y}^{syn}$} edge [pre] (step3)
+            edge [<->, ultra thick, bend right = 45, >=stealth] node[auto,swap] (compare) {Compare} (estimated);
+        \end{pgfonlayer}{foreground}
+
+        \begin{pgfonlayer}{background}
+            \node [draw = black, semithick,
+            fit = (fade1) (step1) (estimated) (fade2) (step2) (fade3) (step3) (synthetic) (compare)] {};
+        \end{pgfonlayer}{background}
+     
+    \end{tikzpicture}
+
+\end{document}
