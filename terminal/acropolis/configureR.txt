@@ -1,0 +1,8 @@
+If you want to use the python package rpy2, you need the following environment
+variables. Please add to your .profile file.
+
+$ nano ~/.profile
+export R_HOME=/usr/lib64/R
+export LD_LIBRARY_PATH=/usr/lib64/R/lib:$LD_LIBRARY_PATH
+
+Then restart.

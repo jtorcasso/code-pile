@@ -35,4 +35,4 @@ Though personally I would recommend enabling the firewall and only opening port 
 
 In any event, install openssh-server, open port 22, and let us know what happens to your git pull.
 
-git pull ssh://jake@128.135.133.60/home/jake/Documents/repos/erc/data/HSIS
+git pull ssh://jake@128.135.133.60/home/jake/Documents/repos/erc/data/hsis-data/dofiles

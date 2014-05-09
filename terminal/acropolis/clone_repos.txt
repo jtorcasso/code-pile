@@ -1,0 +1,4 @@
+Klondike clone:
+
+$ unset SSH_ASKPASS
+$ git clone https://jtorcasso@klondike.uchicago.edu/git/hsis-evaluation
