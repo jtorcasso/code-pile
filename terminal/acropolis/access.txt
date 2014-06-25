@@ -41,7 +41,7 @@ to do this the first time you use VNC. If the server is rebooted or if
 you kill or have your vncserver session crash then you would need to
 rerun vncserver.
 ssh smohr@acropolis.uchicago.edu
-vncserver
+vncserver -geometry 1920x1080
 
 2. Run "vncserver -machelp" this will tell you how to connect from a mac
 but the steps are the same from Ubuntu. The machelp directions will

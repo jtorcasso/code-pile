@@ -1,5 +1,5 @@
 You can change the resolution of the vnc desktop. It requires a restart
 so first save your work. Then log into Acropolis and run "vncserver
--kill". Then run "vncserver -geometry 1024x768". You can change 1024x768
+-kill". Then run "vncserver -geometry 1920x1080". You can change 1024x768
 to match the resolution of the screen you are working on. Then reconnect
 to vnc as normal.
