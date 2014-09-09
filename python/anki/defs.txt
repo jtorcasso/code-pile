@@ -1,0 +1,2 @@
+Term 1;Definition 1;image1.jpg
+Term 2;Definition 2;image2.jpg
