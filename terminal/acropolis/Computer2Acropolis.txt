@@ -1,0 +1,2 @@
+scp -rp jake@IP:/home/jake/.bash_aliases .
+
